@@ -1,11 +1,20 @@
 ---
 name: clone-tailwindcss-website
-description: Convert HTML and Tailwind CSS snippets from a website into reusable React components, plus an example usage file.
+description: Convert HTML and Tailwind CSS snippets from a website into reusable React components, plus an example usage file. Always apply Vercel React best practices and composition patterns.
 ---
 
 # Clone Tailwind CSS Website
 
 Use this skill when the user provides an HTML snippet copied from a browser and wants it turned into a reusable React component.
+
+## Core Mandate
+
+Whenever this skill is applied, always incorporate the principles from the following skills (if they are available):
+
+- vercel-react-best-practices
+- vercel-composition-patterns
+
+These should shape the implementation by default rather than being treated as optional ideas.
 
 ## Goal
 
@@ -33,14 +42,19 @@ For each snippet, create:
 1. Infer a clear component name from the snippet.
 2. Convert the HTML structure into JSX and Tailwind CSS classes.
 3. Preserve the original layout, spacing, hierarchy, and semantics as closely as possible.
-4. Turn repeated elements into reusable data-driven rendering using arrays and maps.
-5. Extract the visible content from the HTML snippet into the example file so the example is meaningful and self-contained.
-6. Keep the component in a single file and refactor repeated code into small helper structures or mapped lists.
-7. Use TypeScript and React best practices where possible.
+4. Decide whether the component should be a server or client component; prefer server components by default unless interactivity is required.
+5. Break repeated or conceptually distinct parts into small composable subcomponents instead of building one large monolith.
+6. Turn repeated elements into reusable data-driven rendering using arrays and maps.
+7. Extract the visible content from the HTML snippet into the example file so the example is meaningful and self-contained.
+8. Keep the component in a single file and refactor repeated code into small helper structures, mapped lists, or composed subcomponents.
+9. Use TypeScript and React best practices throughout, with a clear props interface and minimal unnecessary complexity.
 
 ## Component Rules
 
 - Prefer functional React components.
+- Favor server components by default; only add "use client" when interactivity or browser-only APIs are required.
+- Keep component responsibilities small and focused.
+- Use composition patterns: extract shared UI into smaller components, keep props explicit, and avoid boolean prop sprawl or deeply nested conditionals.
 - Use Tailwind classes directly.
 - Keep the component reusable by moving content into props where appropriate.
 - If the snippet contains repeated blocks, make them data-driven rather than copy-pasted.
@@ -62,6 +76,7 @@ The final result should:
 - Be reusable instead of being a one-off copy.
 - Contain a practical example showing how to use the component.
 - Show clear refactoring of repeated markup into a cleaner component structure.
+- Demonstrate solid React composition and maintainability rather than just visual translation.
 
 ## Response Format
 
