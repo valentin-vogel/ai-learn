@@ -83,8 +83,8 @@ function WorkflowCardGridSectionCard({
   isHighlighted,
 }: WorkflowCardGridSectionCardProps) {
   return (
-    <li className="bg-background flex flex-col px-6 pb-[22px] pt-[26px]">
-      <div className="mb-[18px] flex flex-col gap-2">
+    <li className="bg-background flex flex-col px-6 pb-5.5 pt-6.5">
+      <div className="mb-4.5 flex flex-col gap-2">
         <h3 className="text-lg font-bold leading-[1.2] tracking-[-0.02em] text-balance sm:text-xl flex items-baseline gap-2.5">
           <span
             aria-hidden="true"
@@ -107,7 +107,7 @@ function WorkflowCardGridSectionCard({
           <li key={`${chip.label}-${chip.href}`}>
             <Link
               href={chip.href}
-              className="font-mono text-xs font-medium border-border bg-foreground/[0.055] text-(--ah-fg-body) hover:border-foreground hover:bg-foreground hover:text-background focus-visible:ring-ring inline-flex items-center whitespace-nowrap rounded-sm border px-[9px] py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+              className="font-mono text-xs font-medium border-border bg-foreground/5.5 text-(--ah-fg-body) hover:border-foreground hover:bg-foreground hover:text-background focus-visible:ring-ring inline-flex items-center whitespace-nowrap rounded-sm border px-2.25 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
             >
               {chip.label}
             </Link>
@@ -118,7 +118,7 @@ function WorkflowCardGridSectionCard({
       <Link
         href={card.primaryLink.href}
         className={cn(
-          "font-mono text-xs font-medium focus-visible:ring-ring group mt-auto flex w-full items-center justify-between gap-2.5 rounded-[8px] border px-[13px] py-2.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+          "font-mono text-xs font-medium focus-visible:ring-ring group mt-auto flex w-full items-center justify-between gap-2.5 rounded-[8px] border px-3.25 py-2.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
           isHighlighted
             ? "border-primary/35 bg-primary/[0.07] text-primary hover:bg-primary/15"
             : "border-border text-(--ah-fg-body) hover:bg-muted hover:text-foreground",
@@ -144,7 +144,7 @@ export function WorkflowCardGridSection({
       aria-label={ariaLabel}
       className={cn("border-b bg-(--ah-band)", className)}
     >
-      <div className="flex flex-col gap-6 px-4.5 pb-10 pt-14 sm:px-11 sm:pt-19 md:flex-row md:items-end md:justify-between md:gap-[30px] md:pb-9.5">
+      <div className="flex flex-col gap-6 px-4.5 pb-10 pt-14 sm:px-11 sm:pt-19 md:flex-row md:items-end md:justify-between md:gap-7.5 md:pb-9.5">
         <div className="md:max-w-2xl">
           <div className="flex flex-col gap-4">
             <h2 className="text-[1.875rem] font-bold leading-[1.08] tracking-[-0.028em] text-balance sm:text-[2.25rem] lg:text-[2.75rem] lg:leading-[1.04] lg:tracking-[-0.032em]">
@@ -158,7 +158,7 @@ export function WorkflowCardGridSection({
 
         <WorkflowCardGridSectionActionLink
           link={cta}
-          className="border-foreground/20 text-foreground hover:border-foreground/40 hover:bg-secondary focus-visible:ring-ring border px-[17px] py-[11px]"
+          className="border-foreground/20 text-foreground hover:border-foreground/40 hover:bg-secondary focus-visible:ring-ring border px-4.25 py-2.75"
         />
       </div>
 
