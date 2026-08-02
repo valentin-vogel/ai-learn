@@ -6,35 +6,35 @@ import {
 
 const testimonials: readonly TestimonialGridItem[] = [
   {
-    quote: "Matt is one of the best developer educators in the world.",
-    authorName: "Guillermo Rauch",
-    authorRole: "Vercel CEO",
+    quote: "Valentin is one of the best developer educators in the world.",
+    authorName: "Guilli Moore",
+    authorRole: "CEO of XY",
     avatar: {
-      src: "https://res.cloudinary.com/total-typescript/image/upload/c_limit,w_96/f_auto/q_auto/v1737463838/workshops/page-6z2ir/qxwhr72flnhn571y4cvg?_a=BAVMn6DY0",
-      alt: "Guillermo Rauch",
+      src: "https://localhost/images/guilli-moore.jpg",
+      alt: "Guilli Moore",
       width: 34,
       height: 34,
     },
   },
   {
-    quote: "Every company needs its own Matt Pocock.",
-    authorName: "shadcn",
-    authorRole: "Creator of shadcn/ui",
+    quote: "Every company needs its own Valentin Vogel.",
+    authorName: "coolaj86",
+    authorRole: "Creator of colix",
     avatar: {
-      src: "https://res.cloudinary.com/total-typescript/image/upload/c_limit,w_96/f_auto/q_auto/v1785230951/aihero/testimonials/shadcn?_a=BAVMn6DY0",
-      alt: "shadcn",
+      src: "https://localhost/images/coolaj86.jpg",
+      alt: "coolaj86",
       width: 34,
       height: 34,
     },
   },
   {
     quote:
-      "Matt Pocock is a true educator and I admire how he brings structure to this mess we are in.",
-    authorName: "Mario Zechner",
-    authorRole: "Creator of Pi",
+      "Valentin is a true educator and I admire how he brings structure to this mess we are in.",
+    authorName: "Hans Klingemann",
+    authorRole: "Creator of XY",
     avatar: {
-      src: "https://res.cloudinary.com/total-typescript/image/upload/c_limit,w_96/f_auto/q_auto/v1785230951/aihero/testimonials/mario-zechner?_a=BAVMn6DY0",
-      alt: "Mario Zechner",
+      src: "https://localhost/images/hans-klingemann.jpg",
+      alt: "Hans Klingemann",
       width: 34,
       height: 34,
     },
