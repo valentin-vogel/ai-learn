@@ -111,7 +111,7 @@ Never reuse these examples blindly.
 If interactive clarification is unavailable, respond exactly like this:
 
 ```text
-Which component name should I use?
+Choose a component name:
 
 1. HeroSection — Recommended
 2. SplitHero
