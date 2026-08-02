@@ -1,8 +1,8 @@
 # AGENTS.md
 
-Do:
-
-- /caveman ultra - Talk like caveman
+Use caveman mode ultra.
+/caveman ultra
+Always use `pnpm` package manager.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
