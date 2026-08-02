@@ -1,101 +1,356 @@
 ---
 name: clone-tailwindcss-website
-description: Convert HTML and Tailwind CSS snippets from a website into reusable React components, plus an example usage file. Always apply Vercel React best practices and composition patterns.
+description: Convert HTML and Tailwind CSS snippets from a website into reusable React components and a companion example file. Use when the user provides copied HTML or Tailwind markup and wants a reusable React implementation. Always apply available Vercel React best practices and composition patterns.
 ---
 
 # Clone Tailwind CSS Website
 
-Use this skill when the user provides an HTML snippet copied from a browser and wants it turned into a reusable React component.
+Convert an HTML and Tailwind CSS snippet into a reusable React component and a companion example.
 
 ## Core Mandate
 
-Whenever this skill is applied, always incorporate the principles from the following skills (if they are available):
+Whenever this skill is applied, incorporate the principles from these skills when they are available:
 
-- vercel-react-best-practices
-- vercel-composition-patterns
+- `vercel-react-best-practices`
+- `vercel-composition-patterns`
 
-These should shape the implementation by default rather than being treated as optional ideas.
+Apply those principles by default. Do not treat them as optional suggestions.
 
 ## Goal
 
-Transform a single HTML + Tailwind snippet into:
+Transform one HTML and Tailwind CSS snippet into:
 
-1. A reusable React component file.
-2. A second example file showing how to use the component.
-3. A refactored component that avoids repeated markup while staying in one component file.
+1. A reusable React component.
+2. A companion example showing how to use the component.
+3. A maintainable implementation that removes meaningful repetition without introducing unnecessary abstractions.
 
 ## Input
 
-- A copied HTML snippet from a website, such as a section, header, card, or button.
-- Optional: a preferred component name.
-- Optional: a target folder or project conventions.
+The user may provide:
+
+- An HTML snippet copied from a website.
+- Tailwind CSS classes embedded in the snippet.
+- An optional preferred component name.
+- An optional target directory.
+- Optional repository-specific conventions.
+
+## Mandatory Naming Decision
+
+Component naming is **always** a blocking user decision unless the user already explicitly provided the component name.
+
+### Non-negotiable Rules
+
+- Never silently choose one of the generated names.
+- Never create, modify, rename, or delete files before the naming decision has been resolved.
+- Never execute any commands before the naming decision has been resolved.
+- Never assume the recommended option is accepted.
+- After asking the naming question, **stop immediately** and wait for the user's response.
+- Continue with implementation after the user chooses a name from the presented suggestions.
+- A missing response is **not** consent.
+- A timeout is **not** consent.
+- An empty response is **not** consent.
+- Never infer acceptance from the user's original request.
+
+### Naming Workflow
+
+#### Case A — User already supplied a component name
+
+Use the supplied name as the starting point for the naming workflow and continue with the "Name Validation" step.
+
+#### Case B — No component name supplied
+
+1. Analyze the HTML snippet.
+2. Search the repository for existing component names.
+3. Generate exactly **5 unique names**.
+
+Generate:
+
+- **3 generic reusable names**
+- **2 context-aware reusable names**
+
+Then ask the user to choose one.
+
+**Stop immediately after asking.**
+**Continue only after the user chooses a name from the presented suggestions.**
+
+##### Interactive Clarification
+
+When the current Copilot host supports an interactive clarification or selection tool, you **must** use it.
+
+The clarification must:
+
+- be single-select
+- contain exactly five generated names
+- allow a custom answer if supported
+- mark one option as Recommended
+- ask only the naming question
+- contain no implementation
+- contain no code generation
+- contain no file creation
+
+The question should be equivalent to:
+
+> Which component name should I use?
+
+Each option should contain: PascalCase component name
+
+Example:
+
+- HeroSection — Recommended
+- SplitHero
+- HeroWithActions
+- ProductIntro
+- CampaignHeader
+- Custom name
+
+Generate names appropriate for the current snippet.
+Never reuse these examples blindly.
+
+##### Text Fallback
+
+If interactive clarification is unavailable, respond exactly like this:
+
+```text
+Which component name should I use?
+
+1. HeroSection — Recommended
+2. SplitHero
+3. HeroWithActions
+4. ProductIntro
+5. CampaignHeader
+
+You may also provide your own component name.
+
+Reply with the number or the exact component name.
+```
+
+After printing this list:
+
+- Stop immediately.
+- Do not generate code.
+- Do not create files.
+- Do not continue.
+
+#### Valid Selection
+
+A name has only been selected if one of the following happens:
+
+- the user clicked an interactive option
+- the user replied with a number
+- the user replied with the exact suggested name
+- the user entered a custom name
+
+The following are **not** valid selections:
+
+- Continue
+- Go ahead
+- Looks good
+- Whatever you recommend
+- Use the best one
+
+If the response is ambiguous, ask again.
+
+Never continue with implementation until a valid selection is made.
+
+#### Name Validation
+
+After the user selected a name:
+
+1. Convert to PascalCase.
+2. Generate kebab-case folder.
+3. Search the repository for:
+   - filename conflicts
+   - exported component conflicts
+   - directory conflicts
+4. Treat case-only differences as conflicts.
+5. Never overwrite existing components.
+6. If a conflict exists:
+   - explain it
+   - generate new suggestions
+   - ask again
+   - wait
+
+#### Component Naming Rules
+
+Names should describe UI structure instead of content.
+
+Good examples:
+
+- HeroSection
+- FeatureSection
+- SiteHeader
+- FeatureGrid
+- SplitLayout
+- PricingSection
+- CardStack
+- QuoteBlock
+- MediaPanel
+- HeroWithActions
+- HeroWithForm
+
+Avoid names copied from:
+
+- products
+- companies
+- campaigns
+- marketing text
+- headings
+- brands
+
+Bad examples:
+
+- SummerSaleBanner
+- AcmeHero
+- LaunchSignup
+
+Use numeric suffixes only if repository conventions require them.
 
 ## Required Output
 
-For each snippet, create:
+Create:
 
-1. A component folder using kebab-case, for example: hero-section.
-2. Inside that folder, a component file named using PascalCase, for example: hero-section/HeroSection.tsx.
-3. A second file in the same folder named with the same base name and .example.tsx, for example: hero-section/HeroSection.example.tsx.
+```text
+hero-section/
+├── HeroSection.tsx
+└── HeroSection.example.tsx
+```
 
-## Workflow
+Use:
 
-1. Infer a generic component name from the snippet structure rather than from its specific copy or brand context.
-2. Before creating the component, present the user with multiple naming suggestions: 5 names in total, including 3 preferred generic names and 2 context-based names that are offered only as optional alternatives for the user to choose from.
-3. Confirm the chosen name with the user or proceed with the preferred default if the user does not specify one.
-4. Check the repository components to ensure the chosen name does not already exist before creating the component files.
-5. Convert the HTML structure into JSX and Tailwind CSS classes.
-6. Preserve the original layout, spacing, hierarchy, and semantics as closely as possible.
-7. Decide whether the component should be a server or client component; prefer server components by default unless interactivity is required.
-8. Break repeated or conceptually distinct parts into small composable subcomponents instead of building one large monolith.
-9. Turn repeated elements into reusable data-driven rendering using arrays and maps.
-10. Extract the visible content from the HTML snippet into the example file so the example is meaningful and self-contained.
-11. Place the component and example in the same subfolder and refactor repeated code into small helper structures, mapped lists, or composed subcomponents.
-12. Use TypeScript and React best practices throughout, with a clear props interface and minimal unnecessary complexity.
+- kebab-case folders
+- PascalCase components
+- PascalCase.example.tsx example files
 
-## Component Naming Rules
+Respect repository conventions.
 
-- Use generic, reusable names that describe UI structure or intent rather than the source content.
-- Before implementation, present the user with 5 naming suggestions in total: 3 preferred names and 2 context-based names.
-- The 3 preferred names should be generic and reusable, such as HeroSection, FeatureSection, Header, CtaSection, HeroSection01, HeroSectionWithFormAction, FeatureGrid, SplitLayout, PricingSection, MediaPanel, QuoteBlock, or CardStack.
-- The 2 context-based names should be optional alternatives that may reflect the current UI context, but they should still be general enough to remain reusable and should be presented only so the user can decide whether to use them.
-- Do not use names based on the input content, campaign text, product names, brands, or specific copy.
-- Avoid names like SummerSaleBanner, AcmeProductHero, or LaunchWeekSignup even if those words appear in the source snippet.
-- Before creating files, verify that the selected name does not already exist in the repository components directory or in the current component tree.
+## Implementation Workflow
+
+Begin **only after** the naming decision is complete.
+
+1. Validate the selected name.
+2. Search the repository.
+3. Follow existing conventions.
+4. Convert HTML to JSX.
+5. Preserve layout.
+6. Preserve semantics.
+7. Decide server vs client.
+8. Prefer Server Components.
+9. Extract props.
+10. Convert repeated content into arrays.
+11. Extract meaningful subcomponents.
+12. Keep helper components inside the same file.
+13. Move copied content into the example file.
+14. Validate imports.
+15. Validate TypeScript.
 
 ## Component Rules
 
-- Prefer functional React components.
-- Favor server components by default; only add "use client" when interactivity or browser-only APIs are required.
-- Keep component responsibilities small and focused.
-- Use composition patterns: extract shared UI into smaller components, keep props explicit, and avoid boolean prop sprawl or deeply nested conditionals.
-- Use Tailwind classes directly.
-- Keep the component reusable by moving content into props where appropriate.
-- If the snippet contains repeated blocks, make them data-driven rather than copy-pasted.
-- Keep the implementation clean, readable, and production-friendly.
-- Avoid unnecessary abstractions; refactor only where repetition is meaningful.
+- Functional React components
+- TypeScript
+- Explicit props
+- Prefer Server Components
+- Add `"use client"` only if required
+- Tailwind directly
+- Composition over inheritance
+- Small focused components
+- Repeated markup becomes mapped data
+- Semantic HTML
+- Accessible markup
+- No unnecessary abstractions
+- No unnecessary state
+- No unnecessary effects
 
-## Example File Rules
+## Repetition Rules
 
-- Create a companion file with the same base name and the .example.tsx suffix.
-- Import the component into the example file.
-- Populate the example with extracted content from the HTML snippet.
-- Make the example easy to understand and visually representative of the original design.
+Refactor repeated markup into arrays.
+
+Prefer:
+
+```tsx
+const items = [
+  {
+    title: "Example",
+    description: "Description",
+  },
+]
+```
+
+Avoid duplicated JSX.
+
+Avoid extracting every small wrapper into its own component.
+
+## Content Separation
+
+Component:
+
+- layout
+- props
+- rendering
+- reusable structure
+
+Example:
+
+- heading
+- body
+- CTA
+- links
+- images
+- copied content
+
+Do not embed marketing copy inside reusable components.
+
+## Example Rules
+
+The example must:
+
+- import the component
+- show realistic usage
+- contain extracted content
+- be self-contained
+- match the original design
 
 ## Quality Bar
 
-The final result should:
+The result should:
 
-- Match the structure and styling of the original snippet.
-- Be reusable instead of being a one-off copy.
-- Contain a practical example showing how to use the component.
-- Show clear refactoring of repeated markup into a cleaner component structure.
-- Demonstrate solid React composition and maintainability rather than just visual translation.
+- preserve layout
+- preserve semantics
+- preserve accessibility
+- be reusable
+- use composition
+- avoid duplicated markup
+- follow React best practices
+- compile successfully
 
-## Response Format
+## Final Response
 
-When applying this skill, provide:
+After implementation provide:
 
-- The component file content.
-- The example file content.
-- A short note describing the component name and the main refactoring choices.
+1. Selected component name
+2. Created files
+3. Refactoring summary
+4. Server vs Client explanation
+5. Validation results
+6. Remaining assumptions
+
+## CRITICAL EXECUTION RULE
+
+This rule overrides all others.
+
+If the user has **not explicitly selected a component name**, you must:
+
+1. Generate five names.
+2. Present them using the interactive clarification tool when available.
+3. Otherwise present the numbered fallback list.
+4. End your response immediately.
+5. Wait for the user's next message.
+
+Do **not** generate React code.
+
+Do **not** create files.
+
+Do **not** continue implementation.
+
+The current response must contain **only** the naming question.
+
+Implementation always begins in the following agent turn.
