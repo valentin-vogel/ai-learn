@@ -34,20 +34,28 @@ Transform a single HTML + Tailwind snippet into:
 
 For each snippet, create:
 
-1. A component file named using PascalCase, for example: HeroSection.tsx
-2. A second file named with the same base name and .example.tsx, for example: HeroSection.example.tsx
+1. A component folder using kebab-case, for example: hero-section.
+2. Inside that folder, a component file named using PascalCase, for example: hero-section/HeroSection.tsx.
+3. A second file in the same folder named with the same base name and .example.tsx, for example: hero-section/HeroSection.example.tsx.
 
 ## Workflow
 
-1. Infer a clear component name from the snippet.
+1. Infer a generic component name from the snippet structure rather than from its specific copy or brand context.
 2. Convert the HTML structure into JSX and Tailwind CSS classes.
 3. Preserve the original layout, spacing, hierarchy, and semantics as closely as possible.
 4. Decide whether the component should be a server or client component; prefer server components by default unless interactivity is required.
 5. Break repeated or conceptually distinct parts into small composable subcomponents instead of building one large monolith.
 6. Turn repeated elements into reusable data-driven rendering using arrays and maps.
 7. Extract the visible content from the HTML snippet into the example file so the example is meaningful and self-contained.
-8. Keep the component in a single file and refactor repeated code into small helper structures, mapped lists, or composed subcomponents.
+8. Place the component and example in the same subfolder and refactor repeated code into small helper structures, mapped lists, or composed subcomponents.
 9. Use TypeScript and React best practices throughout, with a clear props interface and minimal unnecessary complexity.
+
+## Component Naming Rules
+
+- Use generic, reusable names that describe UI structure or intent rather than the source content.
+- Prefer names such as HeroSection, FeatureSection, Header, CtaSection, HeroSection01, HeroSectionWithFormAction, FeatureGrid, SplitLayout, PricingSection, MediaPanel, QuoteBlock, or CardStack.
+- Do not use names based on the input content, campaign text, product names, brands, or specific copy.
+- Avoid names like SummerSaleBanner, AcmeProductHero, or LaunchWeekSignup even if those words appear in the source snippet.
 
 ## Component Rules
 
