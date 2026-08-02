@@ -41,21 +41,27 @@ For each snippet, create:
 ## Workflow
 
 1. Infer a generic component name from the snippet structure rather than from its specific copy or brand context.
-2. Convert the HTML structure into JSX and Tailwind CSS classes.
-3. Preserve the original layout, spacing, hierarchy, and semantics as closely as possible.
-4. Decide whether the component should be a server or client component; prefer server components by default unless interactivity is required.
-5. Break repeated or conceptually distinct parts into small composable subcomponents instead of building one large monolith.
-6. Turn repeated elements into reusable data-driven rendering using arrays and maps.
-7. Extract the visible content from the HTML snippet into the example file so the example is meaningful and self-contained.
-8. Place the component and example in the same subfolder and refactor repeated code into small helper structures, mapped lists, or composed subcomponents.
-9. Use TypeScript and React best practices throughout, with a clear props interface and minimal unnecessary complexity.
+2. Before creating the component, present the user with multiple naming suggestions: 5 names in total, including 3 preferred generic names and 2 context-based names that are offered only as optional alternatives for the user to choose from.
+3. Confirm the chosen name with the user or proceed with the preferred default if the user does not specify one.
+4. Check the repository components to ensure the chosen name does not already exist before creating the component files.
+5. Convert the HTML structure into JSX and Tailwind CSS classes.
+6. Preserve the original layout, spacing, hierarchy, and semantics as closely as possible.
+7. Decide whether the component should be a server or client component; prefer server components by default unless interactivity is required.
+8. Break repeated or conceptually distinct parts into small composable subcomponents instead of building one large monolith.
+9. Turn repeated elements into reusable data-driven rendering using arrays and maps.
+10. Extract the visible content from the HTML snippet into the example file so the example is meaningful and self-contained.
+11. Place the component and example in the same subfolder and refactor repeated code into small helper structures, mapped lists, or composed subcomponents.
+12. Use TypeScript and React best practices throughout, with a clear props interface and minimal unnecessary complexity.
 
 ## Component Naming Rules
 
 - Use generic, reusable names that describe UI structure or intent rather than the source content.
-- Prefer names such as HeroSection, FeatureSection, Header, CtaSection, HeroSection01, HeroSectionWithFormAction, FeatureGrid, SplitLayout, PricingSection, MediaPanel, QuoteBlock, or CardStack.
+- Before implementation, present the user with 5 naming suggestions in total: 3 preferred names and 2 context-based names.
+- The 3 preferred names should be generic and reusable, such as HeroSection, FeatureSection, Header, CtaSection, HeroSection01, HeroSectionWithFormAction, FeatureGrid, SplitLayout, PricingSection, MediaPanel, QuoteBlock, or CardStack.
+- The 2 context-based names should be optional alternatives that may reflect the current UI context, but they should still be general enough to remain reusable and should be presented only so the user can decide whether to use them.
 - Do not use names based on the input content, campaign text, product names, brands, or specific copy.
 - Avoid names like SummerSaleBanner, AcmeProductHero, or LaunchWeekSignup even if those words appear in the source snippet.
+- Before creating files, verify that the selected name does not already exist in the repository components directory or in the current component tree.
 
 ## Component Rules
 
