@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "caveman": {
+      "source": "valentin-vogel/skills",
+      "sourceType": "github",
+      "skillPath": "skills/caveman/SKILL.md",
+      "computedHash": "8ed078e34f70f210817bade9700fa7c91ded2021ffada39ea5f8fc893f210479"
+    },
     "frontend-design": {
       "source": "valentin-vogel/skills",
       "sourceType": "github",
