@@ -90,6 +90,9 @@ The final result should:
 
 When applying this skill, provide:
 
+- A short note describing the component name and the main refactoring choices.
+
+Never provide:
+
 - The component file content.
 - The example file content.
-- A short note describing the component name and the main refactoring choices.
