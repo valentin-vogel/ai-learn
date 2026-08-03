@@ -1,5 +1,21 @@
 import React from "react"
-import "./styles.css"
+import { DM_Sans, JetBrains_Mono, Source_Serif_4 } from "next/font/google"
+import "./globals.css"
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+})
+
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jet-brains-mono",
+  subsets: ["latin"],
+})
+
+const sourceSerif4 = Source_Serif_4({
+  variable: "--font-source-serif-4",
+  subsets: ["latin"],
+})
 
 export const metadata = {
   description: "A blank template using Payload in a Next.js app.",
@@ -13,7 +29,9 @@ export default async function RootLayout(
 
   return (
     <html lang="en">
-      <body>
+      <body
+        className={`${dmSans.variable} ${jetBrainsMono.variable} ${sourceSerif4.variable} antialiased`}
+      >
         <main>{children}</main>
       </body>
     </html>
