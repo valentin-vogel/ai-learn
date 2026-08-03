@@ -29,6 +29,7 @@ export default buildConfig({
       url: process.env.DATABASE_URL || "",
     },
   }),
-  sharp,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  sharp: sharp as any,
   plugins: [],
 })
