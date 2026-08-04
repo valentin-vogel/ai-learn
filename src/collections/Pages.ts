@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload"
+import { descriptionField } from "@/lib/fields/description.field"
 import { slugField } from "@/lib/fields/slug.field"
 import { titleField } from "@/lib/fields/title.field"
 
@@ -16,6 +17,7 @@ export const Pages: CollectionConfig = {
   fields: [
     // Added by payload: id, createdAt, updatedAt
     titleField,
+    descriptionField,
     slugField,
     // Recommend some fields for pages:
   ],

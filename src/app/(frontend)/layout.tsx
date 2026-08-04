@@ -47,9 +47,13 @@ export default async function RootLayout(
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <div className="relative mx-auto w-full max-w-364 px-2">
+            <div className="bg-background border-x print:border-none">
+              <Header />
+              <main className="bg-background text-foreground">{children}</main>
+              <Footer />
+            </div>
+          </div>
         </ThemeProvider>
       </body>
     </html>
