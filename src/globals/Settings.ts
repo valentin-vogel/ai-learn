@@ -1,5 +1,6 @@
 import type { GlobalConfig, Tab, TabsField } from "payload"
-import { isActiveField, linkFields } from "@/lib/payload.utils"
+import { isActiveField } from "@/lib/fields/isactive.field"
+import { linkFields } from "@/lib/fields/link.fields"
 
 const headerTab: Tab = {
   label: "Header",
