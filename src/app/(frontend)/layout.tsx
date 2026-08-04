@@ -1,6 +1,10 @@
 import React from "react"
 import { DM_Sans, JetBrains_Mono, Source_Serif_4 } from "next/font/google"
+import { cn } from "@/lib/utils"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Header } from "@/components/layout/header/header"
+import { Footer } from "@/components/layout/footer/footer"
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -28,11 +32,25 @@ export default async function RootLayout(
   const { children } = props
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${dmSans.variable} ${jetBrainsMono.variable} ${sourceSerif4.variable} antialiased`}
+        className={cn(
+          "bg-page-background relative overflow-x-hidden antialiased font-sans",
+          dmSans.variable,
+          jetBrainsMono.variable,
+          sourceSerif4.variable,
+        )}
       >
-        <main>{children}</main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )
