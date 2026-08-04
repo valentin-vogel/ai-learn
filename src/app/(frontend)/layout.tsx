@@ -1,10 +1,10 @@
-import React from "react"
 import { DM_Sans, JetBrains_Mono, Source_Serif_4 } from "next/font/google"
+import React from "react"
 import { cn } from "@/lib/utils"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { Header } from "@/components/layout/header/header"
 import { Footer } from "@/components/layout/footer/footer"
+import { Header } from "@/components/layout/header/header"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
